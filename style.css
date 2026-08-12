@@ -1,10 +1,10 @@
 @font-face {
-    font-family: "Archivo";
+    font-family: "Archivo1";
     src: url(/src/fonts/ArchivoNarrow-VariableFont_wght.ttf);
     style: normal;
 }
 @font-face {
-    font-family: "Archivo";
+    font-family: "Archivo2";
     src: url(/src/fonts/ArchivoNarrow-Italic-VariableFont_wght.ttf);
     style: italic;
 }
@@ -29,12 +29,17 @@ header {
 
     background: #F599C6;
     background: linear-gradient(90deg,rgba(245, 153, 198, 1) 0%, rgba(235, 227, 167, 1) 50%, rgba(237, 221, 83, 1) 100%);
-    border: #F599C6 3px;
-    border-style: dotted;
+    border-radius: 10px;
+}
+
+header:hover {
+    background: #F599C6;
+    background: linear-gradient(90deg,rgba(245, 153, 198, 1) 0%, rgba(237, 221, 83, 1) 50%, rgba(235, 227, 167, 1) 100%);
+    cursor: pointer;
 }
 
 body {
-    font-family: "Archivo", sans-serif;
+    font-family: "Archivo1", sans-serif;
     font-size: 16px;
     line-height: 1.3;
     color: #2E2910;
@@ -42,4 +47,63 @@ body {
     padding: 10px 30px 30px 30px;
     margin: 0;
 }
+
+.filtres {
+    padding: 30px;
+
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
+
+button {
+    font-family: "Archivo1";
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: dotted 2px;
+    border-radius: 5px;
+    background-color: #F599C6;
+    color: #2E2910;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #F9F0E0;
+    color: #2E2910;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    padding: 30px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #F9F0E0;
+    border: 1.8px dotted #2E2910;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+}
+
+#img_card {
+    width: 65%;
+    justify-content: center;
+    align-items: center;
+}
+
 
