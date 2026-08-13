@@ -1,35 +1,84 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Assign data-letter to each card based on its H2 title
-  const cards = Array.from(document.querySelectorAll('.card'));
-  cards.forEach(card => {
-    const h = card.querySelector('h2');
-    if (!h) return;
-    const first = h.textContent.trim().charAt(0).toUpperCase();
-    card.dataset.letter = first;
-  });
+document.addEventListener('DOMContentLoaded', () => {
+    const boutonsFiltre = document.querySelectorAll('.filtre');
+    const cartes = document.querySelectorAll('.card');
 
-  // Build a map from letter to first matching card
-  const letterMap = new Map();
-  cards.forEach(card => {
-    const l = card.dataset.letter;
-    if (!letterMap.has(l)) letterMap.set(l, card);
-  });
+    // Fonction pour filtrer les cartes
+    function filtrerCartes(categorie) {
+        cartes.forEach(card => {
+            const cardCategorie = card.getAttribute('data-categorie');
 
-  // Alphabet button handlers
-  const alphaButtons = Array.from(document.querySelectorAll('.alphabet .alpha'));
-  alphaButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const letter = btn.dataset.letter.toUpperCase();
-      const target = letterMap.get(letter);
-      // Clear active state
-      alphaButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // Optionally focus the card for accessibility
-        target.setAttribute('tabindex', '-1');
-        target.focus();
-      }
+            if (categorie === 'tous' || cardCategorie === categorie) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Ajouter un écouteur sur chaque bouton
+    boutonsFiltre.forEach(bouton => {
+        bouton.addEventListener('click', () => {
+            // retirer la classe active de tous les boutons (optionnel, pour le style)
+            boutonsFiltre.forEach(b => b.classList.remove('active'));
+            bouton.classList.add('active');
+
+            const valeurFiltre = bouton.getAttribute('data-filtre');
+            filtrerCartes(valeurFiltre);
+        });
     });
+
+    // Afficher tout au chargement
+    filtrerCartes('tous');
+});
+
+
+// -------------- ALPHABETICAL SORTING -----------------
+
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.container');
+  const cartes = Array.from(document.querySelectorAll('.card'));
+
+  cartes.sort((a, b) => {
+    const nomA = a.dataset.nom.toLowerCase();
+    const nomB = b.dataset.nom.toLowerCase();
+    return nomA.localeCompare(nomB, 'fr', { sensitivity: 'base' });
+  });
+
+  container.innerHTML = '';
+  cartes.forEach(card => container.appendChild(card));
+});
+
+// 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.container');
+  const cartes = Array.from(document.querySelectorAll('.card'));
+
+  cartes.sort((a, b) => {
+    const nomA = a.dataset.nom.toLowerCase();
+    const nomB = b.dataset.nom.toLowerCase();
+    return nomA.localeCompare(nomB, 'fr', { sensitivity: 'base' });
+  });
+
+  container.innerHTML = '';
+
+  let lettreCourante = '';
+
+  cartes.forEach(card => {
+    const nom = card.dataset.nom.trim();
+    const premiereLettre = nom.charAt(0).toUpperCase();
+
+    if (premiereLettre !== lettreCourante) {
+      lettreCourante = premiereLettre;
+
+      const ancre = document.createElement('div');
+      ancre.id = `lettre-${lettreCourante.toLowerCase()}`;
+      ancre.textContent = lettreCourante;
+      ancre.classList.add('lettre-section');
+
+      container.appendChild(ancre);
+    }
+
+    container.appendChild(card);
   });
 });

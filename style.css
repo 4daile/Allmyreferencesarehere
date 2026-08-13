@@ -17,10 +17,13 @@
 /* ------------------- HTML ------------------- */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
 }
 /* -------------------------------------------- */
 
-
+:root {
+    --header-height:30rem; /* à ajuster selon la hauteur réelle de ton header + filtres */
+}
 
 /* ------------------- BODY ------------------- */
 body {
@@ -28,9 +31,19 @@ body {
     font-size: 16px;
     line-height: 1.3;
     color: #2E2910;
-    background: linear-gradient(180deg,rgba(245, 153, 198, 1) 0%, rgba(237, 221, 83, 1) 77%, rgba(235, 227, 167, 1) 100%) no-repeat;
-    background-color: #EBE3A7;
+    background: linear-gradient(180deg,rgba(245, 153, 198, 1) 0%, #B4D3D9 40%, #F2EAE0 100%) no-repeat;
+    background-color: #F2EAE0;
     margin: 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: auto 1fr; /* petite colonne + grande zone */
+  align-items: flex-start;
+  gap: 1rem;
+  padding-top: 2rem;
+
+
 }
 
 
@@ -43,7 +56,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 10px 60px;
+    padding: 10px 40px;
 
     
     font-family: "Bast";
@@ -51,8 +64,6 @@ header {
     font-size: 1.2rem;
     line-height: 1.2;
 }
-
-
 
 /* ------------------- FILTRES ------------------- */
 #bouton_filtres {
@@ -91,6 +102,38 @@ button:hover {
 
 
 
+/* ------------------- ALPHABET ------------------- */
+.Alphabet {
+  position: sticky;        /* reste visible pendant le scroll */
+  top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+  width: 32px;  
+  
+  font-size: 1.2rem;  
+  background-color: #f7f0b8;
+}
+
+.alphabet a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;            /* hauteur fixe, petites cases */;
+  text-decoration: none;
+  color: #222;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  /* palette pastel façon “post-its” – tu peux personnaliser */
+  background-color: #f7f0b8; /* par défaut */
+
+
+}
+
+
 /* ------------------- CARTES ------------------- */
 .container {
     display: flex;
@@ -99,6 +142,7 @@ button:hover {
     flex-wrap: wrap;
 
     padding:  10px 60px;
+
 }
 
 .card {
@@ -116,12 +160,29 @@ button:hover {
     box-sizing: border-box;
 }
 
+figcaption {
+    font-family: "Archivo2";
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 10px;
+}
+
 #img_card {
     width: 65%;
     justify-content: center;
     align-items: center;
 }
 
+.lettre-section {
+  grid-column: 1 / -1;
+  font-size: 0;           /* le texte disparaît visuellement */
+  margin: 0;              /* tu peux aussi réduire la marge si tu veux */
+  padding: 0;
+  height: 0;              /* la section ne prend presque pas de place */
+  border: none;
+
+  scroll-margin-top: 30em;
+}
 
 
 /* ------------------- SCROLL TO TOP ------------------- */
@@ -161,6 +222,8 @@ a {
     .container {
         display: flex;
         flex-direction: column;
+        width: 75%;
+        margin: 0 auto;
     }
 
     .card {
