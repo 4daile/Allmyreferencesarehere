@@ -241,10 +241,17 @@ a {
         justify-content: center;
         flex-direction: row;
         font-size: 0.8rem;
-        padding:10px
+        padding:10px;
+        gap: 5px;
     }
 
     #searchButton {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    
+    #clearSearch {
         font-size: 0.8rem;
         padding: 6px 12px;
     }
@@ -255,6 +262,7 @@ a {
         font-size: 0.8rem;
         padding:10px
     }
+
 
     .tool-box {
         display: flex;
