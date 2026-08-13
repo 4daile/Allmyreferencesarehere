@@ -17,13 +17,9 @@
 /* ------------------- HTML ------------------- */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: var(--header-height);
 }
 /* -------------------------------------------- */
 
-:root {
-    --header-height:30rem; /* à ajuster selon la hauteur réelle de ton header + filtres */
-}
 
 /* ------------------- BODY ------------------- */
 body {
@@ -34,16 +30,6 @@ body {
     background: linear-gradient(180deg,rgba(245, 153, 198, 1) 0%, #B4D3D9 40%, #F2EAE0 100%) no-repeat;
     background-color: #F2EAE0;
     margin: 0;
-}
-
-.layout {
-  display: grid;
-  grid-template-columns: auto 1fr; /* petite colonne + grande zone */
-  align-items: flex-start;
-  gap: 1rem;
-  padding-top: 2rem;
-
-
 }
 
 
@@ -65,6 +51,14 @@ header {
     line-height: 1.2;
 }
 
+.tool-box {
+    grid-template-rows: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+}
+
 /* ------------------- FILTRES ------------------- */
 #bouton_filtres {
     font-family: "Archivo1";
@@ -77,9 +71,11 @@ header {
 
     display: flex;
     gap: 10px;
-    justify-content: center;
+    justify-content: left;
     flex-wrap: wrap;
     align-items: center;
+    
+    padding-right: 20px;
 
 }
 
@@ -102,35 +98,57 @@ button:hover {
 
 
 
-/* ------------------- ALPHABET ------------------- */
-.Alphabet {
-  position: sticky;        /* reste visible pendant le scroll */
-  top: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 2px;
-  width: 32px;  
-  
-  font-size: 1.2rem;  
-  background-color: #f7f0b8;
+/* ------------------- RECHERCHE ------------------- */
+
+#searchInput {
+    font-family: "Archivo1";
+    font-size: 1em;
 }
 
-.alphabet a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 24px;            /* hauteur fixe, petites cases */;
-  text-decoration: none;
-  color: #222;
-  border-radius: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+#bouton_recherche {
+    font-family: "Archivo1";
+    font-size: 1em;
+    text-transform: uppercase;
 
-  /* palette pastel façon “post-its” – tu peux personnaliser */
-  background-color: #f7f0b8; /* par défaut */
+    color: #2E2910;
+}
+
+#searchInput {
+    padding: 8px 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F9F0E0;
+    color: #2E2910;
+}
 
 
+#searchButton {
+    font-family: "Archivo1";
+    font-size: 1em;
+    padding: 8px 18px;
+    border: dotted 2px;
+    border-radius: 5px;
+    background-color: #F599C6;
+    color: #2E2910;
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background-color: #F9F0E0;
+    color: #2E2910;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-box {
+    padding: 10px;
+    position: sticky;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: right;
+   
+    align-items: center;
 }
 
 
@@ -173,17 +191,6 @@ figcaption {
     align-items: center;
 }
 
-.lettre-section {
-  grid-column: 1 / -1;
-  font-size: 0;           /* le texte disparaît visuellement */
-  margin: 0;              /* tu peux aussi réduire la marge si tu veux */
-  padding: 0;
-  height: 0;              /* la section ne prend presque pas de place */
-  border: none;
-
-  scroll-margin-top: 30em;
-}
-
 
 /* ------------------- SCROLL TO TOP ------------------- */
 #scroll_to_top {
@@ -210,24 +217,42 @@ a {
 /* ------------------ RESPONSIVE DESIGN <3 --------------------*/
 
 @media screen and (max-width: 640px) {
+    body {
+        font-size: 14px;
+        height: 100%;
+        width: 100%;
+    }
+    
     header {
         position: static;
     }
 
+    h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
     .filtres {
+        justify-content: center;
         flex-direction: row;
         font-size: 0.8rem;
+        padding:10px
+    }
+
+    .tool-box {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
 
     .container {
         display: flex;
+        justify-content: center;
         flex-direction: column;
-        width: 75%;
-        margin: 0 auto;
     }
 
     .card {
-        width: 100%;
+        width: 90%;
     }
 }
 
