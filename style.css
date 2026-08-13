@@ -1,16 +1,16 @@
 @font-face {
     font-family: "Archivo1";
-    src: url(/src/fonts/ArchivoNarrow-VariableFont_wght.ttf);
+    src: url(src/fonts/ArchivoNarrow-VariableFont_wght.ttf);
     style: normal;
 }
 @font-face {
     font-family: "Archivo2";
-    src: url(/src/fonts/ArchivoNarrow-Italic-VariableFont_wght.ttf);
+    src: url(src/fonts/ArchivoNarrow-Italic-VariableFont_wght.ttf);
     style: italic;
 }
 @font-face {
     font-family: "Bast";
-    src: url(/src/fonts/Basteleur-Bold.ttf);
+    src: url(src/fonts/Basteleur-Bold.ttf);
     style: bold;
 }
 
