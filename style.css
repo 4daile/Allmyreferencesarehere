@@ -145,12 +145,17 @@ button:hover {
 
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 5px;
     justify-content: right;
    
     align-items: center;
 }
 
+
+mark {
+  background-color: #fff7a3; /* jaune doux */
+  padding: 0 2px;
+}
 
 /* ------------------- CARTES ------------------- */
 .container {
@@ -233,6 +238,18 @@ a {
     }
 
     .filtres {
+        justify-content: center;
+        flex-direction: row;
+        font-size: 0.8rem;
+        padding:10px
+    }
+
+    #searchButton {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    .search-box {
         justify-content: center;
         flex-direction: row;
         font-size: 0.8rem;
